@@ -6,6 +6,8 @@ This is a simple Notes App that allows users to add and delete notes dynamically
 
 - Add notes with a title and text content
 - Delete notes individually
+- Upadte notes
+- Filter notes
 
 ## Installation
 
