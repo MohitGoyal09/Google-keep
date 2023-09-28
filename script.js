@@ -2,9 +2,16 @@ const addtitle = document.getElementById('addTitle');
 const addtext = document.getElementById('addText');
 const addbtn = document.getElementById('addNote');
 const notes = document.getElementById('notes');
-let notesobj =[];
+shownotes();
 
 function addnotes() {
+    let notesobj = localStorage.getItem('notes');
+    if (notesobj == null) {
+        notesobj = [];
+    }
+    else{
+        notesobj = JSON.parse(notesobj);
+    }
     if (addtitle.value.length !== 0 && addtext.value.length !== 0) {
         let note = {
             title: addtitle.value,
@@ -14,6 +21,7 @@ function addnotes() {
         addtitle.value = '';
         addtext.value = '';
         console.log(notesobj);
+        localStorage.setItem('notes', JSON.stringify(notesobj));
         shownotes();
     }
 }
@@ -22,6 +30,12 @@ addbtn.addEventListener('click', addnotes);
 
 function shownotes(){
     notes.innerHTML = '';
+    let notesobj = localStorage.getItem("notes");
+    if (notesobj == null) {
+      notesobj = [];
+    } else {
+      notesobj = JSON.parse(notesobj);
+    }
     notesobj.forEach(function(element){
         let note = document.createElement('div');
         note.classList.add('note');
