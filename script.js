@@ -48,11 +48,16 @@ function shownotes() {
     deletebtn.addEventListener("click", function () {
       deletenotes(element.title);
     });
+    editbtn.addEventListener("click", function () {
+      editnotes(element.title);
+    })
     title.innerText = element.title;
     text.innerText = element.text;
     note.appendChild(title);
+     note.appendChild(document.createElement("br"));
     note.appendChild(text);
     note.appendChild(deletebtn);
+    note.appendChild(editbtn);
     notes.appendChild(note);
   });
 }
@@ -66,6 +71,23 @@ function deletenotes(title) {
   }
   notesobj = notesobj.filter(function (note) {
     return note.title !== title;
+  });
+  localStorage.setItem("notes", JSON.stringify(notesobj));
+  shownotes();
+}
+
+function editnotes(title) {
+  let notesobj = localStorage.getItem("notes");
+  if (notesobj == null) {
+    notesobj = [];
+  } else {
+    notesobj = JSON.parse(notesobj);
+  }
+  notesobj.forEach(function (element) {
+    if (element.title == title) {
+      element.title = prompt("Enter new title");
+      element.text = prompt("Enter new text");
+    }
   });
   localStorage.setItem("notes", JSON.stringify(notesobj));
   shownotes();

@@ -31,6 +31,7 @@ button {
     color: white;
     padding: 8px 12px;
     border: 1px solid white;
+    cursor: pointer;
 }
 
 #notes {
@@ -40,10 +41,12 @@ button {
      
  }
 .note {
-    width: 300px;
+    width: 200vh;
+    
     color: #a1a0a0;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     overflow-wrap: break-word;
     margin: 12px;
     padding: 12px;
@@ -53,12 +56,14 @@ button {
 .note h2 {
     font-size: 18px;
     margin-bottom: 8px;
+    
 }
 
 .note p {
     font-size: 14px;
     margin-bottom: 8px;
     padding : 8px;
+    margin-top : 10px;
 }
 
 .note button {
@@ -66,4 +71,7 @@ button {
     color: white;
     padding: 8px 12px;
     border: 1px solid white;
+    flex-position: right;
+    cursor: pointer;
+    width: 70px;
 }
